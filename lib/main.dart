@@ -11,10 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            primarySwatch: Colors.amber,
-            scaffoldBackgroundColor: Palette.scaffold),
-        home: HomeScreen());
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primarySwatch: Colors.amber,
+          scaffoldBackgroundColor: Palette.scaffold),
+      home: LoginScreen(),
+      routes: {
+        LoginScreen.routeName: (context) => LoginScreen(),
+        HomeScreen.routeName: (context) => HomeScreen(),
+      },
+    );
   }
 }
