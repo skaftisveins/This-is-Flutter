@@ -10,7 +10,7 @@ class DataScreen extends StatefulWidget {
 }
 
 class _DataScreenState extends State<DataScreen> {
-  var url = Uri.parse("https://jsonplaceholder.typicode.com/photos");
+  var url = Uri.parse("https://www.dropbox.com/h?preview=data.json");
   var data;
 
   @override
@@ -22,6 +22,7 @@ class _DataScreenState extends State<DataScreen> {
   fetchData() async {
     var res = await http.get(url);
     data = jsonDecode(res.body);
+    print(data);
   }
 
   @override
