@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:this_is_flutter/components/drawer.dart';
 import 'package:http/http.dart' as http;
+import 'package:this_is_flutter/widgets/drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/home";

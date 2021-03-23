@@ -1,16 +1,18 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:this_is_flutter/components/drawer.dart';
+import 'package:this_is_flutter/widgets/drawer.dart';
 import 'package:http/http.dart' as http;
 
 class DataScreen extends StatefulWidget {
+  static const String routeName = "/data";
+
   @override
   _DataScreenState createState() => _DataScreenState();
 }
 
 class _DataScreenState extends State<DataScreen> {
-  var url = Uri.parse("https://www.dropbox.com/h?preview=data.json");
+  var url = Uri.parse("https://jsonplaceholder.typicode.com/photos");
   var data;
 
   @override
@@ -22,7 +24,6 @@ class _DataScreenState extends State<DataScreen> {
   fetchData() async {
     var res = await http.get(url);
     data = jsonDecode(res.body);
-    print(data);
   }
 
   @override

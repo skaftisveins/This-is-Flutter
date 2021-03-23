@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.amber,
           scaffoldBackgroundColor: Palette.scaffold),
-      home: DataScreen(),
+      home: DataScreenFB(),
       routes: {
         LoginScreen.routeName: (context) => LoginScreen(),
         HomeScreen.routeName: (context) => HomeScreen(),
