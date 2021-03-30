@@ -1,15 +1,41 @@
-import 'dart:convert';
+// import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:this_is_flutter/widgets/drawer.dart';
-import 'package:http/http.dart' as http;
+import 'package:this_is_flutter/widgets/my_details.dart';
+import 'package:this_is_flutter/widgets/widgets.dart';
+// import 'package:http/http.dart' as http;
 
-class DataScreenFB extends StatelessWidget {
-  Future fetchData() async {
-    final url = Uri.parse("https://jsonplaceholder.typicode.com/photos");
-    var res = await http.get(url);
-    var data = jsonDecode(res.body);
-    return data;
+class DataScreenFB extends StatefulWidget {
+  @override
+  _DataScreenFBState createState() => _DataScreenFBState();
+}
+
+class _DataScreenFBState extends State<DataScreenFB>
+    with SingleTickerProviderStateMixin {
+  // Future fetchData() async {
+  //   final url = Uri.parse("https://jsonplaceholder.typicode.com/photos");
+  //   var res = await http.get(url);
+  //   var data = jsonDecode(res.body);
+  //   return data;
+  // }
+
+  AnimationController _iconAnimationController;
+  Animation<double> _iconAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _iconAnimationController = new AnimationController(
+      vsync: this,
+      duration: new Duration(milliseconds: 500),
+    );
+    _iconAnimation = new CurvedAnimation(
+      parent: _iconAnimationController,
+      curve: Curves.easeOut,
+    );
+    _iconAnimation.addListener(() => this.setState(() {}));
+    _iconAnimationController.forward();
   }
 
   @override
@@ -22,43 +48,36 @@ class DataScreenFB extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: Container(
-        height: 200,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image.asset(
-              "assets/images/logo_transparent.png",
-              // height: 400,
-              // width: 400,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image(
+            image: AssetImage("assets/images/bg_1.jpg"),
+            fit: BoxFit.cover,
+            color: Colors.black.withOpacity(0.6),
+            colorBlendMode: BlendMode.darken,
+          ),
+          Container(
+            alignment: Alignment.topCenter,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 1800),
+              child: Column(
+                children: [
+                  NavigationBar(),
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        MyDetails(),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-            // SizedBox(
-            //   height: 250,
-            //   width: 250,
-            //   child: Image.asset(
-            //     ,
-            //     height: 500,
-            //     width: 500,
-            //   ),
-            // ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  "Resume",
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(
-                  width: 60,
-                ),
-                Text(
-                  "About",
-                  style: TextStyle(fontSize: 20),
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
       drawer: MyDrawer(),
       floatingActionButton: FloatingActionButton(
@@ -73,7 +92,7 @@ class DataScreenFB extends StatelessWidget {
 
   FutureBuilder buildFutureBuilder() {
     return FutureBuilder(
-      future: fetchData(),
+      // future: fetchData(),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
