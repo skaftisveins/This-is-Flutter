@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:this_is_flutter/config/palette.dart';
 
 import 'screens/screens.dart';
@@ -13,9 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: Colors.grey,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          scaffoldBackgroundColor: Palette.scaffold),
+        primarySwatch: Colors.grey,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        scaffoldBackgroundColor: Palette.scaffold,
+        textTheme: GoogleFonts.rubikTextTheme()
+      ),
       home: DataScreenFB(),
       routes: {
         LoginScreen.routeName: (context) => LoginScreen(),

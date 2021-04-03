@@ -1,3 +1,3 @@
-# This Is Flutter
+# This is Flutter
 
-## My Flutter development playground
+## My Flutter Development Playground

@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           TextFormField(
                             controller: _usernameController,
                             keyboardType: TextInputType.emailAddress,
-                            validator: (s) {},
+                            // validator: (s) {},
                             decoration: InputDecoration(
                                 hintText: "Enter email", labelText: "Username"),
                           ),
@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           TextFormField(
                             controller: _passwordController,
                             keyboardType: TextInputType.text,
-                            validator: (s) {},
+                            // validator: (s) {},
                             obscureText: true,
                             decoration: InputDecoration(
                                 hintText: "Enter password",

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:this_is_flutter/widgets/drawer.dart';
 import 'package:this_is_flutter/widgets/my_details.dart';
+import 'package:this_is_flutter/widgets/my_intro.dart';
 import 'package:this_is_flutter/widgets/widgets.dart';
 // import 'package:http/http.dart' as http;
 
@@ -43,6 +44,7 @@ class _DataScreenFBState extends State<DataScreenFB>
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(
           "My Flutter Playground",
           style: TextStyle(color: Colors.black),
@@ -51,30 +53,27 @@ class _DataScreenFBState extends State<DataScreenFB>
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image(
-            image: AssetImage("assets/images/bg_1.jpg"),
-            fit: BoxFit.cover,
-            color: Colors.black.withOpacity(0.6),
-            colorBlendMode: BlendMode.darken,
-          ),
+          BackgroundWidget(),
           Container(
-            alignment: Alignment.topCenter,
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 1800),
-              child: Column(
-                children: [
-                  NavigationBar(),
-                  Expanded(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        MyDetails(),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+            child: Column(
+              children: [
+                NavigationBar(),
+                Expanded(
+                  child: Row(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      MyDetails(),
+                      Expanded(
+                        child: Center(
+                          child: MyIntro(),
+                        ),
+                      ),
+                      /* Expanded(child: Center(child: AboutMe(),),), */
+                    ],
+                  ),
+                )
+              ],
             ),
           ),
         ],
@@ -125,6 +124,22 @@ class _DataScreenFBState extends State<DataScreenFB>
         }
         return CircularProgressIndicator();
       },
+    );
+  }
+}
+
+class BackgroundWidget extends StatelessWidget {
+  const BackgroundWidget({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image(
+      image: AssetImage("assets/images/bg_1.jpg"),
+      fit: BoxFit.cover,
+      color: Colors.black.withOpacity(0.6),
+      colorBlendMode: BlendMode.darken,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class NavigationBar extends StatelessWidget {
   const NavigationBar({
@@ -14,11 +15,21 @@ class NavigationBar extends StatelessWidget {
         children: [
           Image.asset(
             "assets/images/logo_transparent.png",
-            color: Colors.white,
-          ),
+            color: Colors.grey,
+          ) /* .shimmer(
+            duration: Duration(seconds: 8),
+          ), */
+          ,
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
+              _NavBarItem(
+                title: "Home",
+                onPressed: () {},
+              ),
+              SizedBox(
+                width: 60,
+              ),
               _NavBarItem(
                 title: "About",
               ),
@@ -47,16 +58,19 @@ class NavigationBar extends StatelessWidget {
 
 class _NavBarItem extends StatelessWidget {
   final String title;
+  final Function onPressed;
   const _NavBarItem({
     Key key,
     this.title,
+    this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyle(fontSize: 20, color: Colors.white),
+      style: TextStyle(
+          fontWeight: FontWeight.w600, fontSize: 20, color: Colors.grey),
     );
   }
 }
