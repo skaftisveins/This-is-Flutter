@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:this_is_flutter/config/palette.dart';
+import 'package:this_is_flutter/constants.dart';
 
 import 'screens/screens.dart';
 
@@ -11,15 +12,18 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    /* GetX for State Management  */
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        scaffoldBackgroundColor: Palette.scaffold,
-        textTheme: GoogleFonts.rubikTextTheme()
-      ),
-      home: DataScreenFB(),
+          primaryColor: kPrimaryColor,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          scaffoldBackgroundColor: kBgColor,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: TextButton.styleFrom(backgroundColor: kPrimaryColor),
+          ),
+          textTheme: GoogleFonts.rubikTextTheme()),
+      home: MainScreen(),
       routes: {
         LoginScreen.routeName: (context) => LoginScreen(),
         HomeScreen.routeName: (context) => HomeScreen(),
